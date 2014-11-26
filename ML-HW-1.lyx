@@ -1,0 +1,310 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+3a) Since a partition of V corresponds uniquely to an equivilence relation
+ 
+\begin_inset Formula $V\times V\rightarrow\{0,1\}$
+\end_inset
+
+, the number of such equivilence relations (
+\begin_inset Formula $\mathcal{H}^{n}$
+\end_inset
+
+) is exactly the number of possible partitions of a set of size n, which
+ is 
+\begin_inset Formula $Bell_{n}$
+\end_inset
+
+ - the nth Bell number.
+\end_layout
+
+\begin_layout Standard
+b)The VC-Dimension of 
+\begin_inset Formula $\mathcal{H}^{n}$
+\end_inset
+
+ is n-1.
+\end_layout
+
+\begin_layout Standard
+We will show that any n points cannot be shattered.
+\end_layout
+
+\begin_layout Standard
+Lemma: any set of points that includes a cycle (
+\begin_inset Formula $(a_{1},a_{2}),(a_{2},a_{3})...(a_{k},a_{1}))$
+\end_inset
+
+ cannot be shattered by 
+\begin_inset Formula $\mathcal{H}^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Proof: Any relation that assigns 1,1,1..0 to the elements of the cycle is
+ not an eqivilence relation since it does not respect transitivity, therefore
+ that relation cannot be in 
+\begin_inset Formula $\mathcal{H}^{n}$
+\end_inset
+
+, 
+\series bold
+SOMETHING ABOUT |H|.
+\end_layout
+
+\begin_layout Standard
+We will show by induction that any n points from 
+\begin_inset Formula $V\times V$
+\end_inset
+
+ must include a cycle.
+\end_layout
+
+\begin_layout Standard
+In the base case of |V| = 1, label the element of V = {
+\begin_inset Formula $v_{1}$
+\end_inset
+
+}
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+, the only point possible is (
+\begin_inset Formula $v_{1},v_{1}$
+\end_inset
+
+), which is a cycle.
+\end_layout
+
+\begin_layout Standard
+Assume that in the case of |V| = n-1 that every set of points of size n-1
+ from 
+\begin_inset Formula $V\times V$
+\end_inset
+
+ includes a cycle, we will show that for the case of |V|=n any set of n
+ points from 
+\begin_inset Formula $V\times V$
+\end_inset
+
+ includes a cycle.
+\end_layout
+
+\begin_layout Standard
+Given a set of points of size n from 
+\begin_inset Formula $V\times V$
+\end_inset
+
+, consider the 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ element which appears in the fewest number of doubles.
+\end_layout
+
+\begin_layout Standard
+Since in n doubles there are 2n appearances of elements, 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ must appear in at most 2 doubles.
+\end_layout
+
+\begin_layout Standard
+In the case where 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ appears in no doubles - we can remove 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ from V so that |
+\begin_inset Formula $V-v_{1}$
+\end_inset
+
+| = n-1, and remove a double from our set of points to make it size n-1,
+ in which case it must include a cycle per our assumption and thus the set
+ without the removed point must also include a cycle.
+\end_layout
+
+\begin_layout Standard
+In the case where 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ appears in one double - we can remove 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ from V so that |
+\begin_inset Formula $V-v_{1}$
+\end_inset
+
+| = n-1, and remove the double that 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ appears in, in which case it is a set of points of size n-1 which includes
+ elements from 
+\begin_inset Formula $V-v_{1}\times V-v_{1}$
+\end_inset
+
+ only, which must include a cycle per our assumption and thus the set without
+ the removed point must also include a cycle.
+\end_layout
+
+\begin_layout Standard
+In the case where 
+\begin_inset Formula $v_{1}$
+\end_inset
+
+ appears in two doubles - then every element in V must also appear in exactly
+ two doubles (since there are exactly 2n appearances of elements in our
+ set of points) 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+add symettric
+\end_layout
+
+\begin_layout Standard
+c)No, 
+\series bold
+show that you can stuff n-1 points (a,b), (b,c)..(m,n) into 2 classes
+\end_layout
+
+\begin_layout Standard
+4a)
+\begin_inset Formula $\tau_{m}(\mathcal{H})\leq\underset{i=1}{\overset{r}{\sum}}\tau_{m}(\mathcal{H}_{i})$
+\end_inset
+
+ 
+\series bold
+tighter - get rid of intersections? explanation?
+\end_layout
+
+\begin_layout Standard
+4b)For 
+\begin_inset Formula $m\leq D+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $\tau_{m}(\mathcal{H})\leq\underset{i=1}{\overset{r}{\sum}}\underset{j=0}{\overset{D}{\sum}}{m \choose j}=r\underset{j=0}{\overset{D}{\sum}}{m \choose j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Otherwise
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tau_{m}(\mathcal{H})\leq\underset{i=1}{\overset{r}{\sum}}(\frac{e\cdot m}{D})^{D}=r\cdot(\frac{e\cdot m}{D})^{D}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+4c)
+\begin_inset Formula 
+\begin{eqnarray*}
+2^{m} & < & r\cdot(\frac{e\cdot m}{D})^{D}\\
+m & < & D(log(r)+log(\frac{em}{D}))
+\end{eqnarray*}
+
+\end_inset
+
+ 
+\end_layout
+
+\end_body
+\end_document
