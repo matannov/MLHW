@@ -59,13 +59,132 @@
 
 \begin_body
 
+\begin_layout Title
+Introduction to Machine Learning (236756) Homework 1
+\end_layout
+
+\begin_layout Author
+Submitting: Eli Sennesh (337634083) and Matan Nov ()
+\end_layout
+
+\begin_layout Section
+Question 1
+\end_layout
+
+\begin_layout Subsection
+What is the cardinality of 
+\emph on
+H
+\emph default
+?
+\end_layout
+
 \begin_layout Standard
-3a) Since a partition of V corresponds uniquely to an equivilence relation
- 
+The cardinality of 
+\emph on
+H
+\emph default
+ is the number of different ways to choose the 
+\emph on
+k
+\emph default
+ points where h
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+S
+\end_layout
+
+\end_inset
+
+returns +1: 
+\begin_inset Formula $_{n}P_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+What is the VC Dimension of 
+\emph on
+H
+\emph default
+?
+\end_layout
+
+\begin_layout Standard
+The VC Dimension of 
+\emph on
+H
+\emph default
+ is actually 0, because even for a domain of a single point, H
+\begin_inset script superscript
+
+\begin_layout Plain Layout
+C
+\end_layout
+
+\end_inset
+
+is restricted to return +1 at that single point.
+ At no point is H rich enough to contain all possible functions over any
+ domain.
+\end_layout
+
+\begin_layout Section
+Question 2
+\end_layout
+
+\begin_layout Subsection
+Question 2A
+\end_layout
+
+\begin_layout Standard
+By the reasoning of the Bias-Complexity Tradeoff, H
+\bar under
+
+\begin_inset script subscript
+
+\begin_layout Plain Layout
+
+\bar no
+B
+\end_layout
+
+\end_inset
+
+
+\bar default
+ is richer, but its decrease in approximation error appears to have given
+ us an increase in estimation error -- overfitting.
+\end_layout
+
+\begin_layout Subsection
+Question 2B
+\end_layout
+
+\begin_layout Standard
+Suggestions (i) and (iii) can together help Benny improve over Avi's performance.
+ (iii) unequivocally helps reduce estimation error, while (i) can help reduce
+ approximation error while yielding less overfitting than (ii) or Benny's
+ existing hypothesis class.
+ (ii) with the same sample size will just increase overfitting even further.
+\end_layout
+
+\begin_layout Section
+Question 3
+\end_layout
+
+\begin_layout Subsection
+Question 3A
+\end_layout
+
+\begin_layout Standard
+Since a partition of V corresponds uniquely to an equivilence relation 
 \begin_inset Formula $V\times V\rightarrow\{0,1\}$
 \end_inset
 
-, the number of such equivilence relations (
+, the number of such equivalence relations (
 \begin_inset Formula $\mathcal{H}^{n}$
 \end_inset
 
@@ -77,8 +196,12 @@
  - the nth Bell number.
 \end_layout
 
+\begin_layout Subsection
+Question 3B
+\end_layout
+
 \begin_layout Standard
-b)The VC-Dimension of 
+The VC-Dimension of 
 \begin_inset Formula $\mathcal{H}^{n}$
 \end_inset
 
@@ -239,10 +362,22 @@ In the case where
 add symettric
 \end_layout
 
+\begin_layout Subsection
+Question 3C
+\end_layout
+
 \begin_layout Standard
-c)No, 
+No, 
 \series bold
 show that you can stuff n-1 points (a,b), (b,c)..(m,n) into 2 classes
+\end_layout
+
+\begin_layout Section
+Question 4
+\end_layout
+
+\begin_layout Subsection
+Question 4A
 \end_layout
 
 \begin_layout Standard
@@ -253,6 +388,10 @@ show that you can stuff n-1 points (a,b), (b,c)..(m,n) into 2 classes
  
 \series bold
 tighter - get rid of intersections? explanation?
+\end_layout
+
+\begin_layout Subsection
+Question 4B
 \end_layout
 
 \begin_layout Standard
@@ -293,6 +432,10 @@ Otherwise
 
 \end_layout
 
+\begin_layout Subsection
+Question 4C
+\end_layout
+
 \begin_layout Standard
 4c)
 \begin_inset Formula 
@@ -303,7 +446,11 @@ m & < & D(log(r)+log(\frac{em}{D}))
 
 \end_inset
 
- 
+
+\end_layout
+
+\begin_layout Section
+Question 5
 \end_layout
 
 \end_body
