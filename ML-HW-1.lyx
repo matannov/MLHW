@@ -453,5 +453,176 @@ m & < & D(log(r)+log(\frac{em}{D}))
 Question 5
 \end_layout
 
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+def learn_interval(examples):
+\end_layout
+
+\begin_layout Plain Layout
+
+  # sorting is O(n*log(n)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  examples.sort_by(lambda ex: ex.x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  # Iterate from leftmost positive to rightmost positive 
+\end_layout
+
+\begin_layout Plain Layout
+
+  # filtering is O(n)
+\end_layout
+
+\begin_layout Plain Layout
+
+  # zipWithIndex -- first component of the tuple is the example,
+\end_layout
+
+\begin_layout Plain Layout
+
+  #   second is the index
+\end_layout
+
+\begin_layout Plain Layout
+
+  positives = examples.zipWithIndex.filter(lambda ex: ex[0].y == +1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  positive_indices = positives.map(lambda ex: ex[1]) #mapping is O(n) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  positives = positives.map(lambda ex: ex[0]) #still O(n) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  # maximally wide interval has maximum error 
+\end_layout
+
+\begin_layout Plain Layout
+
+  best_interval = (0, len(examples), 1.0) 
+\end_layout
+
+\begin_layout Plain Layout
+
+  # this loop takes time O(n^2): for each inside a for each 
+\end_layout
+
+\begin_layout Plain Layout
+
+  for i in range(0, len(positive_indices)): 
+\end_layout
+
+\begin_layout Plain Layout
+
+    a = positive_indices[i] 
+\end_layout
+
+\begin_layout Plain Layout
+
+    # Iterate from rightmost positive to leftmost positive, one by one.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+    for j in range(len(positive_indices) - 1, -1, -1): 
+\end_layout
+
+\begin_layout Plain Layout
+
+      b = positive_indices[j] 
+\end_layout
+
+\begin_layout Plain Layout
+
+      # the number of negative examples outside our current interval 
+\end_layout
+
+\begin_layout Plain Layout
+
+      # these are *correctly* classified 
+\end_layout
+
+\begin_layout Plain Layout
+
+      negatives_outside = a + (len(examples) - b) 
+\end_layout
+
+\begin_layout Plain Layout
+
+      # how many *positives* are inside the interval? 
+\end_layout
+
+\begin_layout Plain Layout
+
+      positives_inside = j - i + 1 
+\end_layout
+
+\begin_layout Plain Layout
+
+      # the number of positives *outside* the interval -- ERROR 
+\end_layout
+
+\begin_layout Plain Layout
+
+      positives_outside = len(positives) - positives_inside 
+\end_layout
+
+\begin_layout Plain Layout
+
+      # how many *negatives* are inside the interval -- ERROR 
+\end_layout
+
+\begin_layout Plain Layout
+
+      negatives_inside = (b - a + 1) - positives_inside 
+\end_layout
+
+\begin_layout Plain Layout
+
+      error = (positives_outside + negatives_inside) / len(examples) 
+\end_layout
+
+\begin_layout Plain Layout
+
+      if error < best_interval[2] then: 
+\end_layout
+
+\begin_layout Plain Layout
+
+        best_interval = (a, b, error)
+\end_layout
+
+\begin_layout Plain Layout
+
+  #return the tuple components aside from the error counter
+\end_layout
+
+\begin_layout Plain Layout
+
+  return (best_interval[0], best_interval[1])
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
