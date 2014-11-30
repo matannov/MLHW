@@ -117,58 +117,18 @@ The VC Dimension of
 \emph on
 H
 \emph default
- is 
-\begin_inset Formula $min(k,\lfloor\frac{n}{2}\rfloor)$
-\end_inset
+ is actually 0, because even for a domain of a single point, H
+\begin_inset script superscript
 
-.
+\begin_layout Plain Layout
+C
 \end_layout
 
-\begin_layout Standard
-H cannot shatter samples of size greater than 
-\begin_inset Formula $k$
 \end_inset
 
-, as we cannot assign assign 1 to every point in the sample (since we can
- assign 1 to at most k points).
-\end_layout
-
-\begin_layout Standard
-H cannot shatter samples of size greater than 
-\begin_inset Formula $\lfloor\frac{n}{2}\rfloor$
-\end_inset
-
- (if k is greater than 
-\begin_inset Formula $\frac{n}{2}$
-\end_inset
-
-), as we cannot assign 0 to every point in the sample (we have to choose
- exactly k different points and there are less than k points in n that aren't
- in the sample).
-\end_layout
-
-\begin_layout Standard
-We can shatter any sample of size k, if k is at most 
-\begin_inset Formula $\frac{n}{2}$
-\end_inset
-
-, or 
-\begin_inset Formula $\lfloor\frac{n}{2}\rfloor$
-\end_inset
-
- since for an assignment of 1 to 
-\begin_inset Formula $m<k$
-\end_inset
-
- points we choose those m points to be in 
-\begin_inset Formula $h_{C}$
-\end_inset
-
- and we choose an additional 
-\begin_inset Formula $k-m$
-\end_inset
-
- points that are not in C.
+is restricted to return +1 at that single point.
+ At no point is H rich enough to contain all possible functions over any
+ domain.
 \end_layout
 
 \begin_layout Section
@@ -639,6 +599,10 @@ Therefore the VCDim of
 
 \begin_layout Standard
 Question 4D
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Section
