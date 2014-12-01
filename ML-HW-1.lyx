@@ -64,7 +64,7 @@ Introduction to Machine Learning (236756) Homework 1
 \end_layout
 
 \begin_layout Author
-Submitting: Eli Sennesh (337634083) and Matan Nov ()
+Submitting: Eli Sennesh (337634083) and Matan Nov (308285907)
 \end_layout
 
 \begin_layout Section
@@ -431,7 +431,7 @@ If we show that every such relation
 \end_layout
 
 \begin_layout Standard
-For every string S, we can build an equivilence relation 
+For a given string S, we can build an equivilence relation 
 \begin_inset Formula $h_{S}$
 \end_inset
 
@@ -492,46 +492,65 @@ Question 3C
 \end_layout
 
 \begin_layout Standard
-Yes - 
+No - 
 \begin_inset Formula $\mathcal{H}_{log(n)}^{n}$
 \end_inset
 
- cannot shatter any set of points C of size greater than log(n):
+ can shatter a set of points C of size n-1:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $C=\{p_{1},p_{2}...p_{log(n)+1}\}$
+\begin_inset Formula $C=\{(v_{1},v_{2}),(v_{1},v_{3})...(v_{1},v_{n})\}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-No equivilence relation in 
+For every string S of size n-1 over {0,1} we can build an equivilence relation
+ in 
 \begin_inset Formula $\mathcal{H}_{log(n)}^{n}$
 \end_inset
 
- can assign 
-\begin_inset Formula $h(p_{i})=0$
+ such that if S[i]=1 then 
+\begin_inset Formula $h(C[i])=1$
+\end_inset
+
+ and otherwise 
+\begin_inset Formula $h(C[i])=0$
 \end_inset
 
  for all i.
 \end_layout
 
 \begin_layout Standard
-Assume by contradiction that there was a relation 
-\begin_inset Formula $h\in\mathcal{H}_{log(n)}^{n}$
+For a given string S, we build our equivilence relation 
+\begin_inset Formula $h_{S}$
 \end_inset
 
- such that 
-\begin_inset Formula $\forall p\in C:h(p)=0$
+ by defining two equivilence classes: 
+\begin_inset Formula $e_{1}=\{v_{1}\}\cup\{v_{i+1}|S[i]=1\}$
 \end_inset
 
+, 
+\begin_inset Formula $e_{0}=\{v_{i}|v_{i}\in V\wedge v_{i}\notin e_{1}\}$
+\end_inset
 
-\end_layout
+ - 
+\begin_inset Formula $h_{S}$
+\end_inset
 
-\begin_layout Standard
-If 
+ is an equivilence relation since it divides the elements of V into disjoint
+ classes and 
+\begin_inset Formula $h_{S}$
+\end_inset
+
+ is in 
+\begin_inset Formula $\mathcal{H}_{log(n)}^{n}$
+\end_inset
+
+ (for all n above some constant such that log(n)>2) since it has at most
+ 2 equivilency classes.
 \end_layout
 
 \begin_layout Section
@@ -596,12 +615,26 @@ Question 4C
 \end_layout
 
 \begin_layout Standard
+Assume VCDim(
+\begin_inset Formula $\mathcal{H}$
+\end_inset
+
+) = m, then 
+\begin_inset Formula $\tau_{\mathcal{H}}(m)=2^{m}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-2^{m} & > & r\cdot(\frac{e\cdot m}{D})^{D}\\
-m & > & log(r)+Dlog(\frac{em}{D})\\
-m & > & log(r)\\
-m & > & log(r)+Dlog(\frac{log(r)}{D})
+2^{m} & \leq & r\cdot(\frac{e\cdot m}{D})^{D}\\
+m & \leq & log(r)+Dlog(\frac{m}{D})+Dlog(e)\,\leq log(r)+2Dlog(\frac{m}{D})\\
+\frac{m}{D} & \leq & \frac{log(r)}{D}+2log(\frac{m}{D})\\
+ & Lemma\, A.2\\
+\frac{m}{D} & \leq & 2\frac{log(r)}{D}+4\\
+m & \leq & log(r)+Dlog(\frac{m}{D})\leq log(r)+Dlog(2\frac{log(r)}{D}+4)\leq log(r)+2Dlog(\frac{log(r)}{D})
 \end{eqnarray*}
 
 \end_inset
@@ -610,35 +643,127 @@ m & > & log(r)+Dlog(\frac{log(r)}{D})
 \end_layout
 
 \begin_layout Standard
-Therefore the VCDim of 
-\begin_inset Formula $\mathcal{H}$
-\end_inset
-
- is 
-\begin_inset Formula $max(D,log(r)+Dlog(\frac{log(r)}{D}))$
-\end_inset
-
- - the former because 
-\begin_inset Formula $\mathcal{H}$
-\end_inset
-
- includes all the functions in any given 
-\begin_inset Formula $\mathcal{H}_{i}$
-\end_inset
-
-, and cannot therefore have a lower VCDim than any 
-\begin_inset Formula $\mathcal{H}_{i}$
-\end_inset
-
-, and the latter because of the upper bound provided for the growth function.
+Question 4D
 \begin_inset Newline newline
+\end_inset
+
+We can seperate 
+\begin_inset Formula $\mathcal{H}^{(k)}$
+\end_inset
+
+ into k concept classes 
+\begin_inset Formula $\mathcal{H}_{S}^{(k)}$
+\end_inset
+
+ for 
+\begin_inset Formula $S\subset[1..d]\wedge|S|=k$
+\end_inset
+
+ to be hypothesis classes of half-spaces with vector 
+\begin_inset Formula $w\in\mathbb{R}^{d}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\forall i\notin S:w(i)=0$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Question 4D
+Since 
+\begin_inset Formula $H_{S}$
+\end_inset
+
+ are k dimensional half-spaces it follows that 
+\begin_inset Formula $VCDim(H_{S})\le k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Also, the number of sets in the union are 
+\begin_inset Formula ${d \choose k}$
+\end_inset
+
+, therefore:
+\begin_inset Formula 
+\begin{eqnarray*}
+VCDim(\mbox{\mathcal{H}}^{(k)}) & = & O(log({d \choose k})+klog(\frac{log({d \choose k})}{k})\\
+VCDim(\mbox{\mathcal{H}}^{(k)}) & = & O(d+klog(\frac{d}{k})=O(klog(\frac{d}{k})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Question 4E
+\begin_inset Newline newline
+\end_inset
+
+Represent every subset 
+\begin_inset Formula $X_{i}\subset[1..log(d)](1\leq i\leq d)$
+\end_inset
+
+ as a vector 
+\begin_inset Formula $v_{X_{i}}(j)=\begin{cases}
+1 & j\in X_{i}\\
+-1 & j\notin X_{i}
+\end{cases}$
+\end_inset
+
+ (
+\begin_inset Formula $|v_{X_{i}}|=log(d)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+Define a sample of vector 
+\begin_inset Formula $C=\{c_{1},c_{2}...c_{log(d)}\}:c_{i}(j)=v_{X_{j}}(i)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For any given 
+\begin_inset Formula $X_{i}$
+\end_inset
+
+, there exists a hypothesis 
+\begin_inset Formula $h_{i}\in\mathcal{H}^{(1)}$
+\end_inset
+
+ that satisfies
+\begin_inset Formula $h_{i}(c_{j})=1\iff j\in X_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In particular, the samples that the hypothesis 
+\begin_inset Formula $h_{i}(c)=sign(c(i))$
+\end_inset
+
+ classifies as 1 is 
+\begin_inset Formula $\{c_{j}|c_{j}(i)=1\}=\{c_{j}|V_{X_{i}}(j)=1\}=\{c_{j}|j\in X_{i}\}$
+\end_inset
+
+, which means 
+\begin_inset Formula $\mathcal{H}^{(1)}$
+\end_inset
+
+ shatters an example of size log(d): 
+\begin_inset Formula $VCDim(\mathcal{H}^{(1)})\geq log(d)$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
